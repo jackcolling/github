@@ -5,45 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grubhub Visual Identity Guidelines 2025</title>
     <style>
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            background-color: #f5f5f5;
-            padding: 40px 20px;
+        :root {
+            /* Primary Colors */
+            --color-orange: #FF5500;
+            --color-espresso: #1B100F;
+            --color-white: #FFFFFF;
+            --color-froth: #F8F4F1;
+            --color-latte: #F3E3CB;
+            --color-cortado: #E7CDA2;
+
+            /* Secondary Colors */
+            --color-egg-yolk: #FFCA48;
+            --color-shortcake: #FFC4A7;
+            --color-mint: #B8D9C5;
+            --color-plum: #5F2B4B;
+
+            /* UI Colors */
+            --color-bg: #f5f5f5;
+            --color-border: #e0e0e0;
+            --color-text-secondary: #666;
+
+            /* Spacing */
+            --spacing-sm: 20px;
+            --spacing-md: 40px;
+            --spacing-lg: 60px;
+            --spacing-xl: 80px;
         }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: var(--color-bg);
+            padding: var(--spacing-md) var(--spacing-sm);
+            line-height: 1.5;
+        }
+
+        /* Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background-color: white;
-            padding: 60px;
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Typography */
         h1 {
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 5px;
-            color: #1B100F;
-        }
-
-        .subtitle {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 60px;
-        }
-
-        .content-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
+            color: var(--color-espresso);
         }
 
         h2 {
@@ -51,20 +69,43 @@
             font-weight: 900;
             margin-bottom: 30px;
             line-height: 1.2;
-            color: #1B100F;
+            color: var(--color-espresso);
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
         }
 
         .description {
             font-size: 18px;
             line-height: 1.6;
-            margin-bottom: 20px;
-            color: #1B100F;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-espresso);
         }
 
         .description strong {
             font-weight: 700;
         }
 
+        /* Layout */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: start;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-divider {
+            margin: var(--spacing-xl) 0;
+            border: 0;
+            height: 1px;
+            background-color: var(--color-border);
+        }
+
+        /* Color Swatches */
         .color-swatches {
             display: flex;
             flex-direction: column;
@@ -80,23 +121,25 @@
         }
 
         .color-card.white {
-            background-color: #FFFFFF;
-            border: 1px solid #e0e0e0;
+            background-color: var(--color-white);
+            border: 1px solid var(--color-border);
         }
 
         .color-card.froth {
-            background-color: #F8F4F1;
+            background-color: var(--color-froth);
         }
 
         .color-card.latte {
-            background-color: #F3E3CB;
+            background-color: var(--color-latte);
         }
 
         .color-card.cortado {
-            background-color: #E7CDA2;
+            background-color: var(--color-cortado);
         }
 
-        .color-visual {
+        /* Color Visual Displays */
+        .color-visual,
+        .secondary-colors-visual {
             display: flex;
             height: 600px;
             border-radius: 12px;
@@ -107,31 +150,73 @@
             flex: 1;
             display: flex;
             align-items: flex-end;
-            padding: 40px;
+            padding: var(--spacing-md);
         }
 
+        /* Primary Color Blocks */
         .color-block.orange {
-            background-color: #FF5500;
+            background-color: var(--color-orange);
         }
 
         .color-block.espresso {
-            background-color: #1B100F;
+            background-color: var(--color-espresso);
         }
 
-        .color-info {
-            color: white;
+        /* Secondary Color Blocks */
+        .color-block.egg-yolk {
+            background-color: var(--color-egg-yolk);
         }
 
-        .color-name {
-            font-size: 18px;
+        .color-block.shortcake {
+            background-color: var(--color-shortcake);
+        }
+
+        .color-block.mint {
+            background-color: var(--color-mint);
+        }
+
+        .color-block.plum {
+            background-color: var(--color-plum);
+        }
+
+        /* Color Info Text */
+        .color-info,
+        .swatch-info {
+            color: var(--color-white);
+        }
+
+        .color-info.dark-text,
+        .swatch-info {
+            color: var(--color-espresso);
+        }
+
+        .color-name,
+        .swatch-name {
             font-weight: 700;
             margin-bottom: 5px;
         }
 
+        .color-name {
+            font-size: 18px;
+        }
+
+        .swatch-name {
+            font-size: 16px;
+        }
+
+        .color-hex,
+        .swatch-hex {
+            font-family: 'Courier New', monospace;
+            margin-bottom: 3px;
+        }
+
         .color-hex {
             font-size: 14px;
-            margin-bottom: 3px;
-            font-family: 'Courier New', monospace;
+        }
+
+        .swatch-hex {
+            font-size: 13px;
+            margin-bottom: 2px;
         }
 
         .color-pms {
@@ -139,30 +224,10 @@
             margin-bottom: 2px;
         }
 
-        .color-cmyk {
+        .color-cmyk,
+        .swatch-cmyk {
             font-size: 13px;
             margin-bottom: 3px;
-        }
-
-        .color-contrast {
-            font-size: 12px;
-            margin-top: 5px;
-        }
-
-        .swatch-info {
-            color: #1B100F;
-        }
-
-        .swatch-name {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .swatch-hex {
-            font-size: 13px;
-            font-family: 'Courier New', monospace;
-            margin-bottom: 2px;
         }
 
         .swatch-cmyk {
@@ -170,182 +235,210 @@
             margin-bottom: 2px;
         }
 
+        .color-contrast {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
         .swatch-contrast {
             font-size: 11px;
-            color: #666;
+            color: var(--color-text-secondary);
         }
 
-        .section-divider {
-            margin: 80px 0;
-            border: 0;
-            height: 1px;
-            background-color: #e0e0e0;
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            h2 {
+                font-size: 36px;
+            }
+
+            .container {
+                padding: var(--spacing-md);
+            }
         }
 
-        .secondary-colors-visual {
-            display: flex;
-            height: 600px;
-            border-radius: 12px;
-            overflow: hidden;
-        }
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-sm) 10px;
+            }
 
-        .color-block.egg-yolk {
-            background-color: #FFCA48;
-        }
+            .container {
+                padding: var(--spacing-sm);
+            }
 
-        .color-block.shortcake {
-            background-color: #FFC4A7;
-        }
+            h2 {
+                font-size: 28px;
+            }
 
-        .color-block.mint {
-            background-color: #B8D9C5;
-        }
+            .description {
+                font-size: 16px;
+            }
 
-        .color-block.plum {
-            background-color: #5F2B4B;
-        }
+            .color-visual,
+            .secondary-colors-visual {
+                height: 400px;
+                flex-direction: column;
+            }
 
-        .color-info.dark-text {
-            color: #1B100F;
+            .color-block {
+                padding: var(--spacing-sm);
+            }
+
+            .color-card {
+                min-height: 140px;
+                padding: var(--spacing-sm);
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Grubhub Visual Identity Guidelines 2025</h1>
-        <p class="subtitle">Color</p>
+        <header>
+            <h1>Grubhub Visual Identity Guidelines 2025</h1>
+            <p class="subtitle">Color</p>
+        </header>
 
-        <div class="content-wrapper">
-            <div class="left-section">
-                <h2>Primary color palette</h2>
-                <p class="description">
-                    Our new orange is <strong>vibrant and recognizable</strong>.
-                    It's a bold, accessible, and high-impact tone that aligns
-                    perfectly with our evolution and feels appetizing.
-                </p>
-                <p class="description">
-                    Coffee-themed, natural-toned neutrals fit into the system
-                    to support this vibrant orange and lend warmth while pairing
-                    well with food imagery.
-                </p>
+        <!-- Primary Colors Section -->
+        <section>
+            <div class="content-wrapper">
+                <div class="left-section">
+                    <h2>Primary color palette</h2>
+                    <p class="description">
+                        Our new orange is <strong>vibrant and recognizable</strong>.
+                        It's a bold, accessible, and high-impact tone that aligns
+                        perfectly with our evolution and feels appetizing.
+                    </p>
+                    <p class="description">
+                        Coffee-themed, natural-toned neutrals fit into the system
+                        to support this vibrant orange and lend warmth while pairing
+                        well with food imagery.
+                    </p>
 
-                <div class="color-swatches">
-                    <div class="color-card white">
-                        <div class="swatch-info">
-                            <div class="swatch-name">White</div>
-                            <div class="swatch-hex">#FFFFFF</div>
-                            <div class="swatch-cmyk">CMYK: 0, 0, 0, 0</div>
-                            <div class="swatch-contrast">Contrast Ratio: 18.75:1</div>
+                    <div class="color-swatches">
+                        <div class="color-card white">
+                            <div class="swatch-info">
+                                <div class="swatch-name">White</div>
+                                <div class="swatch-hex">#FFFFFF</div>
+                                <div class="swatch-cmyk">CMYK: 0, 0, 0, 0</div>
+                                <div class="swatch-contrast">Contrast Ratio: 18.75:1</div>
+                            </div>
+                        </div>
+
+                        <div class="color-card froth">
+                            <div class="swatch-info">
+                                <div class="swatch-name">Froth</div>
+                                <div class="swatch-hex">#F8F4F1</div>
+                                <div class="swatch-cmyk">CMYK: 0, 2, 2, 3</div>
+                                <div class="swatch-contrast">Contrast Ratio: 18.92:1</div>
+                            </div>
+                        </div>
+
+                        <div class="color-card latte">
+                            <div class="swatch-info">
+                                <div class="swatch-name">Latte</div>
+                                <div class="swatch-hex">#F3E3CB</div>
+                                <div class="swatch-cmyk">CMYK: 4, 9, 20, 0</div>
+                                <div class="swatch-contrast">Contrast Ratio: 16.62:1</div>
+                            </div>
+                        </div>
+
+                        <div class="color-card cortado">
+                            <div class="swatch-info">
+                                <div class="swatch-name">Cortado</div>
+                                <div class="swatch-hex">#E7CDA2</div>
+                                <div class="swatch-cmyk">CMYK: 9, 17, 39, 0</div>
+                                <div class="swatch-contrast">Contrast Ratio: 12.19:1</div>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="color-card froth">
-                        <div class="swatch-info">
-                            <div class="swatch-name">Froth</div>
-                            <div class="swatch-hex">#F8F4F1</div>
-                            <div class="swatch-cmyk">CMYK: 0, 2, 2, 3</div>
-                            <div class="swatch-contrast">Contrast Ratio: 18.92:1</div>
+                <div class="right-section">
+                    <div class="color-visual">
+                        <div class="color-block orange">
+                            <div class="color-info">
+                                <div class="color-name">Grubhub Orange</div>
+                                <div class="color-hex">#FF5500</div>
+                                <div class="color-pms">PMS 1655 (Solid C/U)</div>
+                                <div class="color-pms">PMS 17-1361 Scarlet Ibis (Fabric)</div>
+                                <div class="color-cmyk">CMYK: 0, 81, 100, 0</div>
+                                <div class="color-contrast">Contrast Ratio: 3.21:1</div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="color-card latte">
-                        <div class="swatch-info">
-                            <div class="swatch-name">Latte</div>
-                            <div class="swatch-hex">#F3E3CB</div>
-                            <div class="swatch-cmyk">CMYK: 4, 9, 20, 0</div>
-                            <div class="swatch-contrast">Contrast Ratio: 16.62:1</div>
-                        </div>
-                    </div>
-
-                    <div class="color-card cortado">
-                        <div class="swatch-info">
-                            <div class="swatch-name">Cortado</div>
-                            <div class="swatch-hex">#E7CDA2</div>
-                            <div class="swatch-cmyk">CMYK: 9, 17, 39, 0</div>
-                            <div class="swatch-contrast">Contrast Ratio: 12.19:1</div>
+                        <div class="color-block espresso">
+                            <div class="color-info">
+                                <div class="color-name">Espresso</div>
+                                <div class="color-hex">#1B100F</div>
+                                <div class="color-cmyk">CMYK: 69, 69, 67, 82</div>
+                                <div class="color-contrast">Contrast Ratio: 18.06:1</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="right-section">
-                <div class="color-visual">
-                    <div class="color-block orange">
-                        <div class="color-info">
-                            <div class="color-name">Grubhub Orange</div>
-                            <div class="color-hex">#FF5500</div>
-                            <div class="color-pms">PMS 1655 (Solid C/U)</div>
-                            <div class="color-pms">PMS 17-1361 Scarlet Ibis (Fabric)</div>
-                            <div class="color-cmyk">CMYK: 0, 81, 100, 0</div>
-                            <div class="color-contrast">Contrast Ratio: 3.21:1</div>
-                        </div>
-                    </div>
-
-                    <div class="color-block espresso">
-                        <div class="color-info">
-                            <div class="color-name">Espresso</div>
-                            <div class="color-hex">#1B100F</div>
-                            <div class="color-cmyk">CMYK: 69, 69, 67, 82</div>
-                            <div class="color-contrast">Contrast Ratio: 18.06:1</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
 
         <hr class="section-divider">
 
-        <div class="content-wrapper">
-            <div class="left-section">
-                <h2>Secondary colors</h2>
-                <p class="description">
-                    Our secondary colors are carefully chosen to complement our new orange by providing balance and versatility. They enhance the vibrancy of the orange while offering contrast that supports clarity and visual hierarchy.
-                </p>
-                <p class="description">
-                    Whether used to highlight key messaging or to create depth in layouts, these hues work harmoniously to reinforce Grubhub's energy and warmth without overwhelming it.
-                </p>
-            </div>
+        <!-- Secondary Colors Section -->
+        <section>
+            <div class="content-wrapper">
+                <div class="left-section">
+                    <h2>Secondary colors</h2>
+                    <p class="description">
+                        Our secondary colors are carefully chosen to complement our new orange by providing balance and versatility. They enhance the vibrancy of the orange while offering contrast that supports clarity and visual hierarchy.
+                    </p>
+                    <p class="description">
+                        Whether used to highlight key messaging or to create depth in layouts, these hues work harmoniously to reinforce Grubhub's energy and warmth without overwhelming it.
+                    </p>
+                </div>
 
-            <div class="right-section">
-                <div class="secondary-colors-visual">
-                    <div class="color-block egg-yolk">
-                        <div class="color-info dark-text">
-                            <div class="color-name">Egg Yolk</div>
-                            <div class="color-hex">#FFCA48</div>
-                            <div class="color-cmyk">CMYK: 0, 21, 72, 0</div>
-                            <div class="color-contrast">Contrast Ratio: 12.31:1</div>
+                <div class="right-section">
+                    <div class="secondary-colors-visual">
+                        <div class="color-block egg-yolk">
+                            <div class="color-info dark-text">
+                                <div class="color-name">Egg Yolk</div>
+                                <div class="color-hex">#FFCA48</div>
+                                <div class="color-cmyk">CMYK: 0, 21, 72, 0</div>
+                                <div class="color-contrast">Contrast Ratio: 12.31:1</div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="color-block shortcake">
-                        <div class="color-info dark-text">
-                            <div class="color-name">Shortcake</div>
-                            <div class="color-hex">#FFC4A7</div>
-                            <div class="color-cmyk">CMYK: 0, 23, 35, 0</div>
-                            <div class="color-contrast">Contrast Ratio: 11.07:1</div>
+                        <div class="color-block shortcake">
+                            <div class="color-info dark-text">
+                                <div class="color-name">Shortcake</div>
+                                <div class="color-hex">#FFC4A7</div>
+                                <div class="color-cmyk">CMYK: 0, 23, 35, 0</div>
+                                <div class="color-contrast">Contrast Ratio: 11.07:1</div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="color-block mint">
-                        <div class="color-info dark-text">
-                            <div class="color-name">Mint</div>
-                            <div class="color-hex">#B8D9C5</div>
-                            <div class="color-cmyk">CMYK: 15, 0, 9, 15</div>
-                            <div class="color-contrast">Contrast Ratio: 12.29:1</div>
+                        <div class="color-block mint">
+                            <div class="color-info dark-text">
+                                <div class="color-name">Mint</div>
+                                <div class="color-hex">#B8D9C5</div>
+                                <div class="color-cmyk">CMYK: 15, 0, 9, 15</div>
+                                <div class="color-contrast">Contrast Ratio: 12.29:1</div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="color-block plum">
-                        <div class="color-info">
-                            <div class="color-name">Plum</div>
-                            <div class="color-hex">#5F2B4B</div>
-                            <div class="color-cmyk">CMYK: 0, 55, 21, 63</div>
-                            <div class="color-contrast">Contrast Ratio: 10.86:1</div>
+                        <div class="color-block plum">
+                            <div class="color-info">
+                                <div class="color-name">Plum</div>
+                                <div class="color-hex">#5F2B4B</div>
+                                <div class="color-cmyk">CMYK: 0, 55, 21, 63</div>
+                                <div class="color-contrast">Contrast Ratio: 10.86:1</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </body>
 </html>
