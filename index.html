@@ -31,12 +31,113 @@
             --color-bg: #f5f5f5;
             --color-border: #e0e0e0;
             --color-text-secondary: #666;
+            --color-container: #FFFFFF;
 
             /* Spacing */
             --spacing-sm: 20px;
             --spacing-md: 40px;
             --spacing-lg: 60px;
             --spacing-xl: 80px;
+        }
+
+        /* Dark Mode - Class Based */
+        html.dark {
+            --color-bg: #1a1a1a;
+            --color-border: #333;
+            --color-text-secondary: #aaa;
+            --color-container: #242424;
+        }
+
+        html.dark body {
+            color: var(--color-white);
+        }
+
+        html.dark h1,
+        html.dark h2,
+        html.dark .description,
+        html.dark .subtitle {
+            color: var(--color-white);
+        }
+
+        html.dark .nav {
+            background: var(--color-container);
+            border-color: var(--color-border);
+        }
+
+        html.dark .nav-link {
+            color: var(--color-white);
+        }
+
+        html.dark .nav-link:hover {
+            background-color: #333;
+        }
+
+        html.dark .color-card.white {
+            border-color: #444;
+        }
+
+        html.dark .swatches-label {
+            color: var(--color-text-secondary);
+        }
+
+        html.dark .toast {
+            background: var(--color-white);
+            color: var(--color-espresso);
+        }
+
+        html.dark .copyable::after {
+            background: var(--color-white);
+            color: var(--color-espresso);
+        }
+
+        html.dark .copyable.copied::after {
+            background: var(--color-orange);
+            color: var(--color-white);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 48px;
+            height: 26px;
+            background: var(--color-border);
+            border-radius: 13px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: var(--color-white);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        html.dark .toggle-switch {
+            background: var(--color-orange);
+        }
+
+        html.dark .toggle-switch::before {
+            transform: translateX(22px);
+        }
+
+        .toggle-icon {
+            font-size: 16px;
         }
 
         body {
@@ -50,10 +151,17 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background-color: var(--color-white);
+            background-color: var(--color-container);
             padding: var(--spacing-lg);
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo */
+        .logo {
+            height: 40px;
+            width: auto;
+            margin-bottom: var(--spacing-sm);
         }
 
         /* Typography */
@@ -110,6 +218,19 @@
             display: flex;
             flex-direction: column;
             gap: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-top: var(--spacing-sm);
+        }
+
+        .swatches-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
         }
 
         .color-card {
@@ -193,7 +314,7 @@
         .color-name,
         .swatch-name {
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .color-name {
@@ -207,42 +328,147 @@
         .color-hex,
         .swatch-hex {
             font-family: 'Courier New', monospace;
-            margin-bottom: 3px;
-        }
-
-        .color-hex {
-            font-size: 14px;
-        }
-
-        .swatch-hex {
             font-size: 13px;
-            margin-bottom: 2px;
+            margin-bottom: 12px;
         }
 
         .color-pms {
-            font-size: 13px;
+            font-size: 12px;
             margin-bottom: 2px;
         }
 
         .color-cmyk,
-        .swatch-cmyk {
-            font-size: 13px;
-            margin-bottom: 3px;
-        }
-
         .swatch-cmyk {
             font-size: 12px;
             margin-bottom: 2px;
         }
 
         .color-contrast {
-            font-size: 12px;
-            margin-top: 5px;
+            font-size: 11px;
+            margin-top: 8px;
+            opacity: 0.8;
         }
 
         .swatch-contrast {
             font-size: 11px;
             color: var(--color-text-secondary);
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: var(--color-container);
+            padding: 15px 0;
+            margin-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 100;
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--color-espresso);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: var(--color-froth);
+        }
+
+        .nav-link.active {
+            background-color: var(--color-orange);
+            color: var(--color-white);
+        }
+
+        /* Hover States & Interactivity */
+        .color-block {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .color-block:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .color-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .color-card:hover {
+            transform: translateX(8px);
+            box-shadow: -4px 0 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Copyable Values */
+        .copyable {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            padding: 2px 6px;
+            margin: -2px -6px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .copyable:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .copyable::after {
+            content: 'Click to copy';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-espresso);
+            color: var(--color-white);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .copyable:hover::after {
+            opacity: 1;
+        }
+
+        .copyable.copied::after {
+            content: 'Copied!';
+            background: var(--color-orange);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--color-espresso);
+            color: var(--color-white);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
 
         /* Responsive Design */
@@ -298,12 +524,25 @@
 <body>
     <div class="container">
         <header>
+            <img src="images/Asset 3@3x.png" alt="Grubhub Logo" class="logo">
             <h1>Grubhub Visual Identity Guidelines 2025</h1>
             <p class="subtitle">Color</p>
         </header>
 
+        <!-- Navigation -->
+        <nav class="nav" role="navigation" aria-label="Page sections">
+            <a href="#primary-colors" class="nav-link active">Primary Colors</a>
+            <a href="#secondary-colors" class="nav-link">Secondary Colors</a>
+
+            <div class="theme-toggle">
+                <span class="toggle-icon">☀️</span>
+                <div class="toggle-switch" id="theme-toggle" role="switch" aria-checked="false" aria-label="Toggle dark mode" tabindex="0"></div>
+                <span class="toggle-icon">🌙</span>
+            </div>
+        </nav>
+
         <!-- Primary Colors Section -->
-        <section>
+        <section id="primary-colors">
             <div class="content-wrapper">
                 <div class="left-section">
                     <h2>Primary color palette</h2>
@@ -318,12 +557,13 @@
                         well with food imagery.
                     </p>
 
+                    <p class="swatches-label">Supporting Neutrals</p>
                     <div class="color-swatches">
                         <div class="color-card white">
                             <div class="swatch-info">
                                 <div class="swatch-name">White</div>
-                                <div class="swatch-hex">#FFFFFF</div>
-                                <div class="swatch-cmyk">CMYK: 0, 0, 0, 0</div>
+                                <div class="swatch-hex"><span class="copyable" data-copy="#FFFFFF">#FFFFFF</span></div>
+                                <div class="swatch-cmyk"><span class="copyable" data-copy="0, 0, 0, 0">CMYK: 0, 0, 0, 0</span></div>
                                 <div class="swatch-contrast">Contrast Ratio: 18.75:1</div>
                             </div>
                         </div>
@@ -331,8 +571,8 @@
                         <div class="color-card froth">
                             <div class="swatch-info">
                                 <div class="swatch-name">Froth</div>
-                                <div class="swatch-hex">#F8F4F1</div>
-                                <div class="swatch-cmyk">CMYK: 0, 2, 2, 3</div>
+                                <div class="swatch-hex"><span class="copyable" data-copy="#F8F4F1">#F8F4F1</span></div>
+                                <div class="swatch-cmyk"><span class="copyable" data-copy="0, 2, 2, 3">CMYK: 0, 2, 2, 3</span></div>
                                 <div class="swatch-contrast">Contrast Ratio: 18.92:1</div>
                             </div>
                         </div>
@@ -340,8 +580,8 @@
                         <div class="color-card latte">
                             <div class="swatch-info">
                                 <div class="swatch-name">Latte</div>
-                                <div class="swatch-hex">#F3E3CB</div>
-                                <div class="swatch-cmyk">CMYK: 4, 9, 20, 0</div>
+                                <div class="swatch-hex"><span class="copyable" data-copy="#F3E3CB">#F3E3CB</span></div>
+                                <div class="swatch-cmyk"><span class="copyable" data-copy="4, 9, 20, 0">CMYK: 4, 9, 20, 0</span></div>
                                 <div class="swatch-contrast">Contrast Ratio: 16.62:1</div>
                             </div>
                         </div>
@@ -349,8 +589,8 @@
                         <div class="color-card cortado">
                             <div class="swatch-info">
                                 <div class="swatch-name">Cortado</div>
-                                <div class="swatch-hex">#E7CDA2</div>
-                                <div class="swatch-cmyk">CMYK: 9, 17, 39, 0</div>
+                                <div class="swatch-hex"><span class="copyable" data-copy="#E7CDA2">#E7CDA2</span></div>
+                                <div class="swatch-cmyk"><span class="copyable" data-copy="9, 17, 39, 0">CMYK: 9, 17, 39, 0</span></div>
                                 <div class="swatch-contrast">Contrast Ratio: 12.19:1</div>
                             </div>
                         </div>
@@ -362,10 +602,10 @@
                         <div class="color-block orange">
                             <div class="color-info">
                                 <div class="color-name">Grubhub Orange</div>
-                                <div class="color-hex">#FF5500</div>
-                                <div class="color-pms">PMS 1655 (Solid C/U)</div>
-                                <div class="color-pms">PMS 17-1361 Scarlet Ibis (Fabric)</div>
-                                <div class="color-cmyk">CMYK: 0, 81, 100, 0</div>
+                                <div class="color-hex"><span class="copyable" data-copy="#FF5500">#FF5500</span></div>
+                                <div class="color-pms"><span class="copyable" data-copy="PMS 1655">PMS 1655 (Solid C/U)</span></div>
+                                <div class="color-pms"><span class="copyable" data-copy="PMS 17-1361">PMS 17-1361 Scarlet Ibis (Fabric)</span></div>
+                                <div class="color-cmyk"><span class="copyable" data-copy="0, 81, 100, 0">CMYK: 0, 81, 100, 0</span></div>
                                 <div class="color-contrast">Contrast Ratio: 3.21:1</div>
                             </div>
                         </div>
@@ -373,8 +613,8 @@
                         <div class="color-block espresso">
                             <div class="color-info">
                                 <div class="color-name">Espresso</div>
-                                <div class="color-hex">#1B100F</div>
-                                <div class="color-cmyk">CMYK: 69, 69, 67, 82</div>
+                                <div class="color-hex"><span class="copyable" data-copy="#1B100F">#1B100F</span></div>
+                                <div class="color-cmyk"><span class="copyable" data-copy="69, 69, 67, 82">CMYK: 69, 69, 67, 82</span></div>
                                 <div class="color-contrast">Contrast Ratio: 18.06:1</div>
                             </div>
                         </div>
@@ -386,7 +626,7 @@
         <hr class="section-divider">
 
         <!-- Secondary Colors Section -->
-        <section>
+        <section id="secondary-colors">
             <div class="content-wrapper">
                 <div class="left-section">
                     <h2>Secondary colors</h2>
@@ -403,36 +643,28 @@
                         <div class="color-block egg-yolk">
                             <div class="color-info dark-text">
                                 <div class="color-name">Egg Yolk</div>
-                                <div class="color-hex">#FFCA48</div>
-                                <div class="color-cmyk">CMYK: 0, 21, 72, 0</div>
-                                <div class="color-contrast">Contrast Ratio: 12.31:1</div>
+                                <div class="color-hex"><span class="copyable" data-copy="#FFCA48">#FFCA48</span></div>
                             </div>
                         </div>
 
                         <div class="color-block shortcake">
                             <div class="color-info dark-text">
                                 <div class="color-name">Shortcake</div>
-                                <div class="color-hex">#FFC4A7</div>
-                                <div class="color-cmyk">CMYK: 0, 23, 35, 0</div>
-                                <div class="color-contrast">Contrast Ratio: 11.07:1</div>
+                                <div class="color-hex"><span class="copyable" data-copy="#FFC4A7">#FFC4A7</span></div>
                             </div>
                         </div>
 
                         <div class="color-block mint">
                             <div class="color-info dark-text">
                                 <div class="color-name">Mint</div>
-                                <div class="color-hex">#B8D9C5</div>
-                                <div class="color-cmyk">CMYK: 15, 0, 9, 15</div>
-                                <div class="color-contrast">Contrast Ratio: 12.29:1</div>
+                                <div class="color-hex"><span class="copyable" data-copy="#B8D9C5">#B8D9C5</span></div>
                             </div>
                         </div>
 
                         <div class="color-block plum">
                             <div class="color-info">
                                 <div class="color-name">Plum</div>
-                                <div class="color-hex">#5F2B4B</div>
-                                <div class="color-cmyk">CMYK: 0, 55, 21, 63</div>
-                                <div class="color-contrast">Contrast Ratio: 10.86:1</div>
+                                <div class="color-hex"><span class="copyable" data-copy="#5F2B4B">#5F2B4B</span></div>
                             </div>
                         </div>
                     </div>
@@ -440,5 +672,98 @@
             </div>
         </section>
     </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <script>
+        // Copy to clipboard functionality
+        document.querySelectorAll('.copyable').forEach(el => {
+            el.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                const text = el.dataset.copy;
+
+                try {
+                    await navigator.clipboard.writeText(text);
+
+                    // Show copied state on element
+                    el.classList.add('copied');
+                    setTimeout(() => el.classList.remove('copied'), 1500);
+
+                    // Show toast
+                    const toast = document.getElementById('toast');
+                    toast.textContent = `Copied: ${text}`;
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2000);
+                } catch (err) {
+                    console.error('Failed to copy:', err);
+                }
+            });
+        });
+
+        // Navigation active state on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -80% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${entry.target.id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Smooth scroll for nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            html.classList.add('dark');
+            themeToggle.setAttribute('aria-checked', 'true');
+        }
+
+        // Toggle theme on click
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            themeToggle.setAttribute('aria-checked', isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Toggle theme on keyboard
+        themeToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                themeToggle.click();
+            }
+        });
+    </script>
 </body>
 </html>
